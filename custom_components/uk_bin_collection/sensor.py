@@ -229,14 +229,14 @@ class UKBinCollectionDataSensor(CoordinatorEntity, SensorEntity):
             self._next_collection >= this_week_start
             and self._next_collection <= this_week_end
         ):
-            self._state = f"This Week: {self._next_collection.strftime('%A')}"
+            self._state = f"{self._next_collection.strftime('%A')}"
         elif (
             self._next_collection >= next_week_start
             and self._next_collection <= next_week_end
         ):
-            self._state = f"Next Week: {self._next_collection.strftime('%A')}"
+            self._state = f"Next {self._next_collection.strftime('%A')}"
         elif self._next_collection > next_week_end:
-            self._state = f"Future: {self._next_collection}"
+            self._state = f"{self._next_collection}"
         elif self._next_collection < now.date():
             self._state = "Past"
         else:
